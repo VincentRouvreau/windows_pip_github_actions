@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           vcpkg upgrade --no-dry-run
-          vcpkg install eigen3 mpfr mpir --triplet x64-windows
+          vcpkg install eigen3 cgal --triplet x64-windows
       - name: Build python wheel
         run: |
           mkdir build
