@@ -28,15 +28,10 @@ jobs:
           vcpkg update
           vcpkg upgrade --no-dry-run
           vcpkg install boost-graph boost-serialization boost-date-time boost-system boost-filesystem boost-units boost-thread boost-program-options eigen3 mpfr mpir cgal --triplet x64-windows
-          python -m pip install --user -r .github/build-requirements.txt
-          python -m pip install --user twine
-          python -m pip list
       - name: Build python wheel
         run: |
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DGMP_INCLUDE_DIR="c:/vcpkg/installed/x64-windows/include" -DGMP_LIBRARIES="c:/vcpkg/installed/x64-windows/lib/mpir.lib" -DGMP_LIBRARIES_DIR="c:/vcpkg/installed/x64-windows/lib" -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows -DPython_ADDITIONAL_VERSIONS=3 ..
-          cd src/python
-          cp c:/vcpkg/installed/x64-windows/bin/mpfr.dll gudhi/
-          cp c:/vcpkg/installed/x64-windows/bin/mpir.dll gudhi/
-          python setup.py bdist_wheel
+          dir c:/vcpkg/installed/x64-windows/bin/
+          cp c:/vcpkg/installed/x64-windows/bin/mpfr.dll .
+          cp c:/vcpkg/installed/x64-windows/bin/mpir.dll .
