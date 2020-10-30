@@ -20,8 +20,6 @@ jobs:
           architecture: x64
       - name: Install dependencies
         run: |
-          vcpkg update
-          vcpkg upgrade --no-dry-run
           vcpkg install eigen3 mpfr mpir cgal --triplet x64-windows
       - name: Build python wheel
         run: |
