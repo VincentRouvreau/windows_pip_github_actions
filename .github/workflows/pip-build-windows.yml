@@ -20,6 +20,7 @@ jobs:
           architecture: x64
       - name: Install dependencies
         run: |
+          vcpkg update
           vcpkg upgrade --no-dry-run
           type c:/vcpkg/ports/cgal/portfile.cmake
           vcpkg install eigen3 cgal --triplet x64-windows
