@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd c:
-          rmdir /s /q vcpkg
+          rmdir /s /q "c:\vcpkg"
           git clone --depth 1 --branch 2020.11 https://github.com/microsoft/vcpkg
           cd c:/vcpkg
           bootstrap-vcpkg.bat
