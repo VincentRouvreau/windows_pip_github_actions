@@ -22,14 +22,14 @@ jobs:
         run: |
           cd c:
           Remove-Item -path c:\vcpkg -recurse
-          git clone --depth 1 --branch 2020.11 https://github.com/microsoft/vcpkg
-          cd c:/vcpkg
+          git clone --depth 1 --branch 2020.11 https://github.com/microsoft/vcpkg vcpkgbis
+          cd c:/vcpkgbis
           bootstrap-vcpkg.bat
           copy triplets\x64-windows.cmake triplets\x64-windows-release.cmake
           echo "set(VCPKG_BUILD_TYPE release)" >> triplets\x64-windows-release.cmake
           vcpkg install eigen3 cgal --triplet x64-windows-release
       - name: Build python wheel
         run: |
-          dir c:/vcpkg/installed/x64-windows-release/bin/
-          cp  c:/vcpkg/installed/x64-windows-release/bin/mpfr.dll .
-          cp  c:/vcpkg/installed/x64-windows-release/bin/mpir.dll .
+          dir c:/vcpkgbis/installed/x64-windows-release/bin/
+          cp  c:/vcpkgbis/installed/x64-windows-release/bin/mpfr.dll .
+          cp  c:/vcpkgbis/installed/x64-windows-release/bin/mpir.dll .
