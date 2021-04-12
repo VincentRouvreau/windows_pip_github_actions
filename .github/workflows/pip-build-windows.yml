@@ -25,7 +25,7 @@ jobs:
           bootstrap-vcpkg.bat
           copy triplets\x64-windows.cmake triplets\x64-windows-release.cmake
           echo "set(VCPKG_BUILD_TYPE release)" >> triplets\x64-windows-release.cmake
-          vcpkg install gmp eigen3 cgal --triplet x64-windows-release
+          vcpkg install eigen3 cgal --triplet x64-windows-release
       - name: Build python wheel
         run: |
           dir c:/vcpkg/installed/x64-windows-release/bin/
