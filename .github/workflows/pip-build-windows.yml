@@ -20,12 +20,14 @@ jobs:
           architecture: x64
       - name: Install dependencies
         run: |
-          vcpkg update
-          vcpkg upgrade --no-dry-run
-          type c:/vcpkg/ports/cgal/portfile.cmake
-          vcpkg install yasm-tool gmp eigen3 cgal --triplet x64-windows
+          cd c:/vcpkg
+          git checkout 2020.11
+          bootstrap-vcpkg.bat
+          copy triplets\x64-windows.cmake triplets\x64-windows-release.cmake
+          echo "set(VCPKG_BUILD_TYPE release)" >> triplets\x64-windows-release.cmake
+          vcpkg install gmp eigen3 cgal --triplet x64-windows-release
       - name: Build python wheel
         run: |
-          dir c:/vcpkg/installed/x64-windows/bin/
-          cp c:/vcpkg/installed/x64-windows/bin/mpfr.dll .
-          cp c:/vcpkg/installed/x64-windows/bin/mpir.dll .
+          dir c:/vcpkg/installed/x64-windows-release/bin/
+          cp  c:/vcpkg/installed/x64-windows-release/bin/mpfr.dll .
+          cp  c:/vcpkg/installed/x64-windows-release/bin/mpir.dll .
