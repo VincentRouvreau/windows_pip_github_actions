@@ -21,7 +21,6 @@ jobs:
       - name: Install dependencies
         run: |
           cd c:
-          Remove-Item -path c:\vcpkg -recurse
           git clone --depth 1 --branch 2020.11 https://github.com/microsoft/vcpkg vcpkgbis
           cd c:/vcpkgbis
           bootstrap-vcpkg.bat
