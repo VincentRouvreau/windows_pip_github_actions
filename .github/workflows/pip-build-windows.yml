@@ -20,8 +20,10 @@ jobs:
           architecture: x64
       - name: Install dependencies
         run: |
+          cd c:
+          rmdir /s /q vcpkg
+          git clone --depth 1 --branch 2020.11 https://github.com/microsoft/vcpkg
           cd c:/vcpkg
-          git checkout 2020.11
           bootstrap-vcpkg.bat
           copy triplets\x64-windows.cmake triplets\x64-windows-release.cmake
           echo "set(VCPKG_BUILD_TYPE release)" >> triplets\x64-windows-release.cmake
