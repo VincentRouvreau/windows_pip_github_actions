@@ -12,17 +12,12 @@ jobs:
           submodules: true
       - name: Install dependencies
         run: |
-          cd c:
-          git clone --depth 1 --branch 2020.11 https://github.com/microsoft/vcpkg vcpkgbis
-          .\vcpkg\bootstrap-vcpkg.bat
-          .\vcpkg\vcpkg version
-#          copy triplets\x64-windows.cmake triplets\x64-windows-release.cmake
-#          echo "set(VCPKG_BUILD_TYPE release)" >> triplets\x64-windows-release.cmake
-#          vcpkg install eigen3 cgal --triplet x64-windows-release
-#      - name: Build python wheel
-#        run: |
-#          mkdir build
-#          cd build
-#          cmake -DCMAKE_BUILD_TYPE=Release -DGMP_INCLUDE_DIR="c:/vcpkgbis/installed/x64-windows-release/include" -DGMP_LIBRARIES="c:/vcpkgbis/installed/x64-windows-release/lib/mpir.lib" -DGMP_LIBRARIES_DIR="c:/vcpkgbis/installed/x64-windows-release/lib" -DCMAKE_TOOLCHAIN_FILE="c:/vcpkgbis/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows-release ..
-#          cp  c:/vcpkgbis/installed/x64-windows-release/bin/mpfr.dll .
-#          cp  c:/vcpkgbis/installed/x64-windows-release/bin/mpir.dll .
+          vcpkg install yasm-tool:x86-windows
+          vcpkg install eigen3 cgal --triplet x64-windows
+      - name: Build python wheel
+        run: |
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release -DGMP_INCLUDE_DIR="c:/vcpkg/installed/x64-windows/include" -DGMP_LIBRARIES="c:/vcpkg/installed/x64-windows/lib/mpir.lib" -DGMP_LIBRARIES_DIR="c:/vcpkg/installed/x64-windows/lib" -DCMAKE_TOOLCHAIN_FILE="c:/vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows ..
+          cp  c:/vcpkg/installed/x64-windows/bin/mpfr.dll .
+          cp  c:/vcpkg/installed/x64-windows/bin/mpir.dll .
