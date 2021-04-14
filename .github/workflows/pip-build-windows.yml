@@ -12,7 +12,6 @@ jobs:
           submodules: true
       - name: Install dependencies
         run: |
-#          vcpkg version
           cd c:
           git clone --depth 1 --branch 2020.11 https://github.com/microsoft/vcpkg vcpkgbis
           .\vcpkg\bootstrap-vcpkg.bat
