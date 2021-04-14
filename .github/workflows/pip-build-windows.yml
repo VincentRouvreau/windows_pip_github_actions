@@ -15,10 +15,11 @@ jobs:
           set VCPKG_BUILD_TYPE=release
           vcpkg install yasm-tool:x86-windows
           vcpkg install eigen3 cgal --triplet x64-windows
-      - name: Build python wheel
-        run: |
-          mkdir build
-          cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DGMP_INCLUDE_DIR="c:/vcpkg/installed/x64-windows/include" -DGMP_LIBRARIES="c:/vcpkg/installed/x64-windows/lib/mpir.lib" -DGMP_LIBRARIES_DIR="c:/vcpkg/installed/x64-windows/lib" -DCMAKE_TOOLCHAIN_FILE="c:/vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows ..
-          cp  c:/vcpkg/installed/x64-windows/bin/release/mpfr.dll .
-          cp  c:/vcpkg/installed/x64-windows/bin/release/mpir.dll .
+          dir C:/vcpkg/installed/x64-windows
+#      - name: Build python wheel
+#        run: |
+#          mkdir build
+#          cd build
+#          cmake -DCMAKE_BUILD_TYPE=Release -DGMP_INCLUDE_DIR="c:/vcpkg/installed/x64-windows/include" -DGMP_LIBRARIES="c:/vcpkg/installed/x64-windows/lib/mpir.lib" -DGMP_LIBRARIES_DIR="c:/vcpkg/installed/x64-windows/lib" -DCMAKE_TOOLCHAIN_FILE="c:/vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows ..
+#          cp  c:/vcpkg/installed/x64-windows/bin/release/mpfr.dll .
+#          cp  c:/vcpkg/installed/x64-windows/bin/release/mpir.dll .
