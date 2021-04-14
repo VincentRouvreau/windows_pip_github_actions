@@ -12,12 +12,11 @@ jobs:
           submodules: true
       - name: Install dependencies
         run: |
-          vcpkg version
+#          vcpkg version
           cd c:
           git clone --depth 1 --branch 2020.11 https://github.com/microsoft/vcpkg vcpkgbis
-          cd c:/vcpkgbis
-          bootstrap-vcpkg.bat
-          vcpkg version
+          .\vcpkg\bootstrap-vcpkg.bat
+          .\vcpkg\vcpkg version
 #          copy triplets\x64-windows.cmake triplets\x64-windows-release.cmake
 #          echo "set(VCPKG_BUILD_TYPE release)" >> triplets\x64-windows-release.cmake
 #          vcpkg install eigen3 cgal --triplet x64-windows-release
