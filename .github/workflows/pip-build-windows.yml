@@ -15,7 +15,7 @@ jobs:
           set VCPKG_BUILD_TYPE=release
           vcpkg install yasm-tool:x86-windows
           vcpkg install eigen3 cgal --triplet x64-windows
-          dir C:/vcpkg/installed/x64-windows
+          dir C:/vcpkg/installed/x64-windows/bin
 #      - name: Build python wheel
 #        run: |
 #          mkdir build
