@@ -16,6 +16,7 @@ jobs:
           vcpkg install yasm-tool:x86-windows
           vcpkg install eigen3 cgal --triplet x64-windows
           dir C:/vcpkg/installed/x64-windows/bin
+          type C:/vcpkg/installed/x64-windows/include/CGAL/version.h
 
 # -DGMP_INCLUDE_DIR="c:/vcpkg/installed/x64-windows/include" -DGMP_LIBRARIES="c:/vcpkg/installed/x64-windows/bin/gmp.dll" -DGMP_LIBRARIES_DIR="c:/vcpkg/installed/x64-windows/bin"
       - name: Build python wheel
