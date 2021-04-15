@@ -4,6 +4,9 @@ project(windows_pip_github_actions)
 
 find_package(CGAL)
 message("++ CGAL version ${CGAL_VERSION}")
+message("++ CGAL found ${CGAL_FOUND}")
+message("++ CGAL dir ${CGAL_DIR}")
+message("++ CGAL root ${CGAL_ROOT}")
 
 #list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/src/cmake/modules/")
 
