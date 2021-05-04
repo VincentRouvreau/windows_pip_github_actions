@@ -18,8 +18,8 @@ jobs:
           setupOnly: true
       # Now that vcpkg is installed, it is being used to run with the desired arguments.
       - run: |
-          $VCPKG_ROOT/vcpkg install yasm-tool:x86-windows
-          $VCPKG_ROOT/vcpkg install eigen3:x64-windows cgal:x64-windows
+          c:/vcpkg/vcpkg install yasm-tool:x86-windows
+          c:/vcpkg/vcpkg install eigen3:x64-windows cgal:x64-windows
       - name: Install dependencies
         run: |
           type c:/vcpkg/ports/cgal/portfile.cmake
