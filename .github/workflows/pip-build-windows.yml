@@ -13,8 +13,6 @@ jobs:
       - name: Install dependencies
         run: |
           set VCPKG_BUILD_TYPE=release
-          cd c:/vcpkg
-          git pull
           vcpkg upgrade --no-dry-run cgal
           vcpkg install yasm-tool:x86-windows
           vcpkg install eigen3 cgal --triplet x64-windows
