@@ -16,6 +16,7 @@ jobs:
           # vcpkg 2021.04.30
           vcpkgGitCommitId: 44d94c2edbd44f0c01d66c2ad95eb6982a9a61bc
           setupOnly: true
+          doNotCache: true
       # Now that vcpkg is installed, it is being used to run with the desired arguments.
       - run: |
           c:/vcpkg/vcpkg install yasm-tool:x86-windows
