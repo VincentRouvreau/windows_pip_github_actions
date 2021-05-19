@@ -24,13 +24,13 @@ jobs:
           Invoke-WebRequest https://github.com/CGAL/cgal/releases/download/v5.2.1/CGAL-5.2.1.zip -OutFile CGAL-5.2.1.zip
           Expand-Archive -Path CGAL-5.2.1.zip -DestinationPath .
           cd CGAL-5.2.1
-          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=c:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows -DGMP_INCLUDE_DIR=c:/vcpkg/installed/x64-windows/include -DGMP_LIBRARIES=c:/vcpkg/installed/x64-windows/bin/mpir.dll -DGMP_LIBRARIES_DIR=c:/vcpkg/installed/x64-windows/bin .
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=c:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows -DGMP_INCLUDE_DIR=c:/vcpkg/installed/x64-windows/include -DGMP_LIBRARIES=c:/vcpkg/installed/x64-windows/bin/mpir.dll .
 
       - name: Build python wheel
         run: |
           cd ${{ github.workspace }}
           mkdir build
           cd build
-          cmake -DCGAL_DIR=c:/vcpkg/CGAL-5.2.1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=c:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows -DGMP_INCLUDE_DIR=c:/vcpkg/installed/x64-windows/include -DGMP_LIBRARIES=c:/vcpkg/installed/x64-windows/bin/mpir.dll -DGMP_LIBRARIES_DIR=c:/vcpkg/installed/x64-windows/bin ..
+          cmake -DCGAL_DIR=c:/vcpkg/CGAL-5.2.1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=c:/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows -DGMP_INCLUDE_DIR=c:/vcpkg/installed/x64-windows/include -DGMP_LIBRARIES=c:/vcpkg/installed/x64-windows/bin/mpir.dll ..
           cp  c:/vcpkg/installed/x64-windows/bin/mpfr.dll .
           cp  c:/vcpkg/installed/x64-windows/bin/mpir.dll .
