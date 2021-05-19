@@ -12,6 +12,7 @@ jobs:
           submodules: true
       - name: Install dependencies
         run: |
+          Get-Location
           cd c:/vcpkg
           git fetch --all --tags
           git checkout 2020.11-1
@@ -20,15 +21,16 @@ jobs:
           vcpkg install eigen3 mpfr boost-accumulators boost-algorithm boost-bimap boost-callable-traits boost-concept-check boost-container boost-core boost-detail boost-filesystem boost-functional boost-fusion boost-geometry boost-graph boost-heap boost-intrusive boost-iostreams boost-iterator boost-lambda boost-logic boost-math boost-mpl boost-multi-index boost-multiprecision boost-numeric-conversion boost-optional boost-parameter boost-pool boost-preprocessor boost-property-map boost-property-tree boost-ptr-container boost-random boost-range boost-serialization boost-spirit boost-thread boost-tuple boost-type-traits boost-units boost-utility boost-variant --triplet x64-windows
           vcpkg version
           ls C:/vcpkg/installed/x64-windows/bin
-          cd ${{ github.workspace }}
           Invoke-WebRequest https://github.com/CGAL/cgal/releases/download/v5.2.1/CGAL-5.2.1.zip -OutFile CGAL-5.2.1.zip
           Expand-Archive -Path CGAL-5.2.1.zip -DestinationPath .
-          ls CGAL-5.2.1
+          cd CGAL-5.2.1
+          cmake .
 
       - name: Build python wheel
         run: |
+          cd ${{ github.workspace }}
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DCGAL_DIR=../CGAL-5.2.1 -DCMAKE_TOOLCHAIN_FILE="c:/vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows -DGMP_INCLUDE_DIR="c:/vcpkg/installed/x64-windows/include" -DGMP_LIBRARIES="c:/vcpkg/installed/x64-windows/bin/mpir.dll" -DGMP_LIBRARIES_DIR="c:/vcpkg/installed/x64-windows/bin" ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DCGAL_DIR="c:/vcpkg/CGAL-5.2.1" -DCMAKE_TOOLCHAIN_FILE="c:/vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows -DGMP_INCLUDE_DIR="c:/vcpkg/installed/x64-windows/include" -DGMP_LIBRARIES="c:/vcpkg/installed/x64-windows/bin/mpir.dll" -DGMP_LIBRARIES_DIR="c:/vcpkg/installed/x64-windows/bin" ..
           cp  c:/vcpkg/installed/x64-windows/bin/mpfr.dll .
           cp  c:/vcpkg/installed/x64-windows/bin/mpir.dll .
